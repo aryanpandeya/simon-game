@@ -56,15 +56,18 @@ function checkAnswer( currentLevel ){
         }
     }
     else{
-        $("body").addClass("game-over");
-        $("#level-title").text("Game Over, Press Any Key to Restart");
-        playSound("wrong");
-        setTimeout(function() {
-            $("body").removeClass("game-over");
-        }, 200);
-        
-        startOver();
-        console.log("Failure");
+        if(started === true){
+            $("body").addClass("game-over");
+            $("h1").text("Game Over, Press Any Key to Restart");
+            $("h1").after("<h2 id ='score'> Good Effort </h2>");
+            playSound("wrong");
+            setTimeout(function() {
+                $("body").removeClass("game-over");
+            }, 200);
+            
+            startOver();
+            console.log("Failure");
+        }
     }
 }
 
@@ -73,5 +76,4 @@ function startOver(){
     started = false;
     gamePattern = [];
 }
-
 
